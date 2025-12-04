@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriFix AI - Smart Solutions for Farmers</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js"></script>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="AgriFix AI Logo" class="logo">
+            <span class="brand-name">AgriFix AI</span>
+        </div>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#download" data-i18n="nav_download">Download</a></li>
+                <li><a href="#how-it-works" data-i18n="nav_about">About Us</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <button id="lang-switch" class="lang-btn">
+                    <span id="current-lang">HI</span> / EN
+                </button>
+            </div>
+        </nav>
+        
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="ai-intro-section">
+        <div class="intro-container">
+            <div class="intro-text">
+                <h1 class="ai-title" data-i18n="ai_intro_title">Introducing <br> <span class="highlight-text">AgriFix AI</span></h1>
+                <p class="ai-subtitle" data-i18n="ai_intro_subtitle">Your intelligent companion for the field.</p>
+                <a href="#download" class="scroll-down-btn">
+                    <span data-i18n="ai_btn_start">Get Started</span> <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <div class="robot-wrapper">
+                <div class="speech-bubble" id="robot-chat">
+                    <p id="chat-text" data-i18n="robot_msg">Hello! Let's get fixing. Download AgriFix App from the link below.</p>
+                    <div class="speech-arrow"></div>
+                </div>
+
+                <spline-viewer 
+                    url="https://prod.spline.design/rwlNwQALq9r5Ll8d/scene.splinecode"
+                    loading-anim-type="spinner-small-dark">
+                </spline-viewer>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <div class="hero-content">
+            <h2 data-i18n="hero_title">Fix Your Problems in Minutes</h2>
+            <p data-i18n="hero_subtitle">The ultimate AI assistant for Indian Farmers. Diagnose, Fix, and Get Back to Work.</p>
+            
+            <a href="assets/agrifix.apk" id="download-apk-btn" class="download-btn-main">
+                <i class="fas fa-download"></i> 
+                <span data-i18n="btn_download_large">Download App</span>
+            </a>
+            <p class="version-text">v1.0 | Android</p>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="steps-section">
+        <h2 class="section-title" data-i18n="steps_heading">How It Works</h2>
+        <div class="accordion-container">
+            <div class="step-card active" id="step1">
+                <div class="step-label">
+                    <span class="step-number">01</span>
+                    <h3 data-i18n="step1_title">Upload Problem</h3>
+                </div>
+                <div class="video-overlay">
+                    <video src="assets/videos/step1_upload.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+            <div class="step-card" id="step2">
+                <div class="step-label">
+                    <span class="step-number">02</span>
+                    <h3 data-i18n="step2_title">Get Solution</h3>
+                </div>
+                <div class="video-overlay">
+                    <video src="assets/videos/step2_solution.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+            <div class="step-card" id="step3">
+                <div class="step-label">
+                    <span class="step-number">03</span>
+                    <h3 data-i18n="step3_title">Fix The Issue</h3>
+                </div>
+                <div class="video-overlay">
+                    <video src="assets/videos/step3_fix.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+            <div class="step-card" id="step4">
+                <div class="step-label">
+                    <span class="step-number">04</span>
+                    <h3 data-i18n="step4_title">Satisfied Result</h3>
+                </div>
+                <div class="video-overlay">
+                    <video src="assets/videos/step4_result.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="form-container">
+            <h2 data-i18n="contact_heading">Contact Us & Feedback</h2>
+            <form id="contact-form">
+                <textarea placeholder="Your suggestions or comments..." data-i18n-placeholder="placeholder_comments" required></textarea>
+                <div class="input-row">
+                    <input type="text" placeholder="Your Name" data-i18n-placeholder="placeholder_name" required>
+                    <input type="email" placeholder="Your Email" data-i18n-placeholder="placeholder_email" required>
+                </div>
+                <button type="submit" class="send-btn" data-i18n="btn_send">Send Message</button>
+            </form>
+        </div>
+
+        <div class="team-container">
+            <h3 data-i18n="team_heading">Meet The Creators</h3>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="assets/images/ayush_shukla.jpg" alt="Ayush Shukla" class="member-img">
+                    <div class="member-info">
+                        <h4>Ayush Shukla</h4>
+                        <p class="role" data-i18n="role_ai_data">Backend, AI Training Data Lead</p>
+                        <a href="mailto:ayushshukla6917@gmail.com" class="email-link">ayushshukla6917@gmail.com</a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/ayush_kumar.jpg" alt="Ayush Kumar" class="member-img">
+                    <div class="member-info">
+                        <h4>Ayush Kumar</h4>
+                        <p class="role" data-i18n="role_creator">Web Dev, UI/UX, Creative Lead</p>
+                        <a href="mailto:ayushkumarapsdk@gmail.com" class="email-link">ayushkumarapsdk@gmail.com</a>
+                        <a href="https://instagram.com/napoleon_bonaparte_404" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i> @napoleon_bonaparte_404
+                        </a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/ashish_maurya.jpg" alt="Ashish Kumar Maurya" class="member-img">
+                    <div class="member-info">
+                        <h4>Ashish Kumar Maurya</h4>
+                        <p class="role" data-i18n="role_project_lead">Data base/set Manager</p>
+                        <a href="mailto:aknbup1@gmail.com" class="email-link">aknbup1@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2 data-i18n="footer_thankyou">Thank You!</h2>
+                <h3 data-i18n="footer_why_title">Why AgriFix?</h3>
+                <p data-i18n="footer_why_text">
+                    Farmers in rural India often face mechanical issues miles away from a mechanic. 
+                    AgriFix AI bridges that gap, empowering farmers to fix their own machinery 
+                    using simple AR guidance.
+                </p>
+            </div>
+            <div class="footer-right">
+                <img src="assets/images/footer_illustration.png" alt="AgriFix Illustration" class="footer-illustration">
+            </div>
+        </div>
+        <p class="copyright">© 2025 AgriFix AI. Built for India 🇮🇳</p>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

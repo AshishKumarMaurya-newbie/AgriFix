@@ -1,0 +1,14 @@
+# --- Security (CRITICAL) ---
+# Ignores the file with your Firebase keys so they don't go to GitHub
+js/config.js
+
+# --- OS Generated Files (Junk) ---
+.DS_Store
+Thumbs.db
+
+# --- Dependencies (If you accidentally installed any) ---
+node_modules/
+package-lock.json
+
+# --- Editor Settings ---
+.vscode/

@@ -1,0 +1,798 @@
+/* =========================================
+   1. GLOBAL VARIABLES & PREMIUM RESET
+   ========================================= */
+:root {
+    /* --- PREMIUM EARTHY PALETTE --- */
+    /* Deep Soil Brown (Primary Text/Buttons) */
+    --brown-dark: #3e2723;   
+    --brown-light: #5d4037;
+    
+    /* Wheat/Gold (Accents/Highlights) */
+    --gold-accent: #d4a017;
+    --gold-light: #fbc02d;
+    
+    /* Premium Backgrounds (Beige/Cream) */
+    --beige-bg: #fdfbf7;
+    --beige-gradient: linear-gradient(135deg, #fdfbf7 0%, #fff8e1 100%);
+    
+    /* Action Color (Green for Download logic only) */
+    --action-green: #2e7d32; 
+
+    /* Glass Effects */
+    --glass-header: rgba(253, 251, 247, 0.9); /* Opaque Cream Glass */
+    --glass-border: 1px solid rgba(62, 39, 35, 0.1);
+    --glass-shadow: 0 4px 30px rgba(62, 39, 35, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--beige-gradient);
+    color: var(--brown-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. PREMIUM GLASS HEADER
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--glass-header);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 1000;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+.brand-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--brown-dark);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--brown-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Gold Underline Hover Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background: var(--gold-accent);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-btn {
+    border: 2px solid var(--brown-light);
+    background: transparent;
+    padding: 6px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--brown-light);
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: var(--brown-light);
+    color: white;
+    box-shadow: 0 5px 15px rgba(93, 64, 55, 0.3);
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--brown-dark);
+    cursor: pointer;
+}
+
+/* =========================================
+   3. HOME SECTION (Robot & AI Intro)
+   ========================================= */
+.ai-intro-section {
+    height: 100vh;
+    min-height: 700px;
+    width: 100%;
+    /* Subtle gradient to make the robot stand out */
+    background: linear-gradient(135deg, #fdfbf7 0%, #fff3e0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5% 0 5%; /* Top padding for fixed header */
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 90%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Left Side: Text */
+.intro-text {
+    flex: 1;
+    z-index: 10;
+    padding-right: 20px;
+    animation: slideUpFade 1s ease-out;
+}
+
+.ai-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    color: var(--brown-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.highlight-text {
+    color: var(--gold-accent); /* AgriFix AI in Gold */
+    background: -webkit-linear-gradient(45deg, var(--gold-accent), var(--brown-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ai-subtitle {
+    font-size: 1.5rem;
+    color: var(--brown-light);
+    margin-bottom: 40px;
+    font-weight: 500;
+    max-width: 500px;
+}
+
+.scroll-down-btn {
+    text-decoration: none;
+    color: var(--brown-dark);
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 3px solid var(--gold-accent);
+    padding-bottom: 5px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scroll-down-btn:hover {
+    color: var(--gold-accent);
+    padding-bottom: 10px; /* Moves line down */
+}
+
+/* Right Side: Robot & Chat */
+.robot-wrapper {
+    flex: 1.2; /* Give robot slightly more space */
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+    z-index: 1; 
+}
+
+/* Ensure Spline takes full space */
+spline-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+/* SPEECH BUBBLE POP-UP */
+.speech-bubble {
+    position: absolute;
+    top: 15%; 
+    right: 15%; 
+    background: white;
+    padding: 20px 30px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0; 
+    box-shadow: 0 15px 40px rgba(62, 39, 35, 0.15);
+    z-index: 100; 
+    max-width: 280px;
+    border: 1px solid rgba(62, 39, 35, 0.05);
+    
+    /* Animation Properties */
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    pointer-events: none; 
+}
+
+.speech-bubble p {
+    font-size: 1.1rem;
+    color: var(--brown-dark);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Triangle for Bubble */
+.speech-arrow {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 20px solid white;
+    border-right: 20px solid transparent;
+}
+
+/* Show bubble on hover */
+.robot-wrapper:hover .speech-bubble {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* =========================================
+   4. DOWNLOAD SECTION (Old Hero)
+   ========================================= */
+.download-section {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    /* Farmer Background Image */
+    background: linear-gradient(to bottom, rgba(62, 39, 35, 0.5), rgba(62, 39, 35, 0.7)), url('../assets/images/hero_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax */
+    color: #fff; 
+}
+
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content {
+    /* Re-trigger animation when scrolled into view (requires JS intersection observer, but fine for now) */
+    max-width: 850px;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    font-weight: 400;
+    opacity: 0.95;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Premium Download Button */
+@keyframes pulseGold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 160, 23, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0); }
+}
+
+.download-btn-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #43a047, #2e7d32);
+    color: white;
+    padding: 20px 60px;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: pulseGold 2s infinite;
+}
+
+.download-btn-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+}
+
+.version-text {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   5. HOW IT WORKS
+   ========================================= */
+.steps-section {
+    padding: 100px 5%;
+    background: transparent; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 70px;
+    color: var(--brown-dark);
+    font-weight: 800;
+}
+
+.accordion-container {
+    display: flex;
+    height: 600px;
+    width: 100%;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(62, 39, 35, 0.1);
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.step-card {
+    position: relative;
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #000;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.step-card:hover, .step-card.active {
+    flex: 4;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.5s;
+}
+
+.step-card:hover video, .step-card.active video {
+    filter: brightness(1.1);
+}
+
+.step-label {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 2;
+    color: white;
+    background: rgba(62, 39, 35, 0.85); 
+    backdrop-filter: blur(8px);
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+
+.step-card:hover .step-label {
+    transform: translateY(-10px);
+}
+
+.step-number {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gold-accent);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* =========================================
+   6. CONTACT & TEAM
+   ========================================= */
+.contact-section {
+    padding: 100px 5%;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto 120px auto;
+    padding: 50px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(62, 39, 35, 0.08);
+    text-align: center;
+    border: 1px solid rgba(62, 39, 35, 0.05);
+}
+
+.form-container h2 {
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: var(--brown-dark);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.input-row input {
+    flex: 1;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #efebe9;
+    background: #fafafa;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    color: var(--brown-dark);
+    outline: none;
+    transition: all 0.3s;
+}
+
+textarea:focus, input:focus {
+    border-color: var(--brown-light);
+    background: white;
+    box-shadow: 0 0 0 5px rgba(93, 64, 55, 0.1);
+}
+
+.send-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, var(--brown-light), var(--brown-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(62, 39, 35, 0.3);
+    background: linear-gradient(135deg, var(--brown-dark), #2d1b18);
+}
+
+/* TEAM SECTION */
+.team-container {
+    text-align: center;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 20px;
+    width: 340px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(62, 39, 35, 0.08);
+    transition: transform 0.4s, box-shadow 0.4s;
+    text-align: center;
+    padding-bottom: 30px;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.team-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(62, 39, 35, 0.15);
+}
+
+.member-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.team-card:hover .member-img {
+    filter: grayscale(0%);
+}
+
+.member-info {
+    padding: 25px;
+}
+
+.member-info h4 {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    color: var(--brown-dark);
+}
+
+.member-info .role {
+    color: var(--gold-accent);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.email-link, .social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    color: var(--brown-dark);
+    text-decoration: none;
+    font-weight: 600;
+    background: #efebe9;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.email-link:hover, .social-link:hover {
+    background: var(--brown-light);
+    color: white;
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+.footer-section {
+    background: #2d1b18;
+    color: white;
+    padding: 80px 5% 30px 5%;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-left h2 {
+    font-size: 3.5rem;
+    background: linear-gradient(to right, var(--gold-light), var(--gold-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.footer-left h3 {
+    color: #d7ccc8;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer-left p {
+    color: #a1887f;
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+
+.footer-right {
+    flex: 1;
+    text-align: right;
+    min-width: 300px;
+}
+
+.footer-illustration {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+    color: #8d6e63;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   8. MOBILE OPTIMIZATION
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* Header compacting */
+    header { height: 60px; padding: 0 20px; }
+    .logo { height: 35px; }
+    .brand-name { font-size: 1.3rem; }
+    .nav-links { display: none; } 
+    .hamburger { display: block; } 
+    
+    /* --- NEW: Robot Section Mobile --- */
+    .ai-intro-section {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 70px; /* Account for smaller header */
+    }
+
+    .intro-container {
+        flex-direction: column-reverse; /* Robot Top, Text Bottom */
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .intro-text {
+        text-align: center;
+        padding: 20px;
+        z-index: 10;
+    }
+
+    .ai-title { font-size: 2.8rem; }
+    .ai-subtitle { font-size: 1.2rem; margin: 0 auto 30px auto; }
+    
+    .robot-wrapper {
+        width: 100%;
+        height: 400px; /* Fixed height for robot on phone */
+        flex: none;
+    }
+
+    .speech-bubble {
+        top: 5%;
+        right: auto; /* Center bubble relative to screen */
+        left: 50%;
+        transform: translateX(-50%) scale(0.9);
+    }
+    
+    .speech-arrow {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* --- Download Section Mobile --- */
+    .download-section {
+        background-attachment: scroll; /* DISABLING PARALLAX FIXES ZOOM ON MOBILE */
+        min-height: 100vh;
+        padding: 0 20px;
+    }
+
+    .hero-content h2 { font-size: 2.2rem; }
+    
+    .download-btn-main {
+        width: 100%;
+        padding: 18px 20px;
+        justify-content: center;
+    }
+
+    /* Video Accordion Stack */
+    .steps-section { padding: 60px 5%; }
+    
+    .accordion-container {
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+    }
+
+    .step-card {
+        height: 120px; 
+        flex: none;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .step-card.active, .step-card:hover {
+        height: 350px; 
+    }
+
+    /* Contact Form Stack */
+    .form-container { padding: 30px 20px; }
+    
+    .input-row {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    
+    /* Footer Stack */
+    .footer-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .footer-right { text-align: center; }
+}
