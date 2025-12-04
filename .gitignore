@@ -1,6 +1,6 @@
 # --- Security (CRITICAL) ---
 # Ignores the file with your Firebase keys so they don't go to GitHub
-js/config.js
+config.js
 
 # --- OS Generated Files (Junk) ---
 .DS_Store
